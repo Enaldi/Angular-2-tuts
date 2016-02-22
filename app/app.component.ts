@@ -1,16 +1,13 @@
 import {Component} from 'angular2/core';
-
-interface Hero { // Use interface (instead of class) if you only need type checking -- is lighterweight.
-	id: number;
-	name: string;
-}
-
+import {Hero} from './heroInterface';
+import {HeroDetailComponent} from './hero-detail.component';
 
 //
 // App component
 //
 @Component({
     selector: 	'my-app',
+    directives: [HeroDetailComponent],
     template:	`
     			<h1>{{title}}</h1>
 
@@ -19,19 +16,11 @@ interface Hero { // Use interface (instead of class) if you only need type check
 				  <li *ngFor="#hero of heroes" 
 					[class.selected]="hero === selectedHero"
 				  	(click)="onSelect(hero)"> 
-				    <span class="badge">{{hero.id}}</span> {{hero.name}}
+				    	<span class="badge">{{hero.id}}</span> {{hero.name}}
 				  </li>
 				</ul>
 
-
-				<div *ngIf="selectedHero">
-					<h2>{{selectedHero.name}} details:</h2>
-					<div><label>id: </label>{{selectedHero.id}}</div>
-					<div>
-						<label>name: </label>
-						<input [(ngModel)]="selectedHero.name" placeholder="name">
-					</div>
-				</div>
+				<my-hero-detail [hero]="selectedHero"></my-hero-detail>
     			`,
 	styles: [`
 			  .selected {
@@ -87,7 +76,10 @@ export class AppComponent {
 	public selectedHero: Hero;
 	public heroes = HEROES;
 
-	onSelect(hero: Hero) { this.selectedHero = hero };
+	onSelect(hero: Hero) { 
+		console.log(`onSelect() fired - hero: ${hero.name}`);
+		this.selectedHero = hero 
+	};
 }
 
 
