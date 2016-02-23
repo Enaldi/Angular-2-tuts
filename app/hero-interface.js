@@ -5,4 +5,4 @@ System.register([], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=heroInterface.js.map
+//# sourceMappingURL=hero-interface.js.map

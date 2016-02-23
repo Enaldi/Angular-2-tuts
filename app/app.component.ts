@@ -1,13 +1,14 @@
-import {Component} from 'angular2/core';
-import {Hero} from './heroInterface';
+import {Component, OnInit} from 'angular2/core';
+import {Hero} from './hero-interface';
 import {HeroDetailComponent} from './hero-detail.component';
+import {HeroService} from './hero.service';
+
 
 //
 // App component
 //
 @Component({
     selector: 	'my-app',
-    directives: [HeroDetailComponent],
     template:	`
     			<h1>{{title}}</h1>
 
@@ -69,34 +70,32 @@ import {HeroDetailComponent} from './hero-detail.component';
 			    margin-right: .8em;
 			    border-radius: 4px 0px 0px 4px;
 			  }
-			`]
+	`],
+	directives: [HeroDetailComponent],
+	providers: [HeroService] //  Fresh instance of the service -- Register provider so injector knows how to make a HeroService
+	// BE CAREFUL REGISTERING PROVIDERS: Only do when a new instance needed (not when u want to share a parent's instance)
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
 	public title = "Tour of Heros";
+	public heroes: Hero[];
 	public selectedHero: Hero;
-	public heroes = HEROES;
+
+	constructor(private _heroService: HeroService) { } // Construct data service => supply the fresh instance of the service when Appcomponent created
+
+	getHeroes() {
+		this._heroService.getHeroes().then(heroes => this.heroes = heroes);
+	}
+
+	ngOnInit() { // Call on init instead of within constructor -- reserve constructor for very simple logic
+		this.getHeroes();
+	}
 
 	onSelect(hero: Hero) { 
-		console.log(`onSelect() fired - hero: ${hero.name}`);
-		this.selectedHero = hero 
+		// console.log(`onSelect() fired - hero: ${hero.name}`);
+		this.selectedHero = hero;
 	};
+
+
+	
 }
-
-
-//
-// Data
-//
-var HEROES: Hero[] = [ // Array of type Hero
-	{ "id": 11, "name": "Skronk" },
-	{ "id": 12, "name": "Scscla" },
-	{ "id": 13, "name": "Stinky" },
-	{ "id": 14, "name": "Earlthecat" },
-	{ "id": 15, "name": "Earlthecatwo" },
-	{ "id": 16, "name": "Enaldie" },
-	{ "id": 17, "name": "Megis" },
-	{ "id": 18, "name": "Bigbut" },
-	{ "id": 19, "name": "Chelan" },
-	{ "id": 20, "name": "Mr. Wiggles" }
-];
-
-
