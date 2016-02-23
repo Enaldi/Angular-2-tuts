@@ -4,6 +4,7 @@ import { Component } from 'angular2/core';
 import { HeroService } from './hero.service';
 import { HeroesComponent } from './heroes.component';
 import { DashboardComponent } from './dashboard.component';
+import { HeroDetailComponent } from './hero-detail.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
 @RouteConfig([
@@ -18,6 +19,11 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
     name: 'Heroes', // Name of the route. MUST begin with capital letter.
     component: HeroesComponent // Component created when navigating to the route
   },
+  {
+    path: '/detail/:id', // : indicates placeholder for hero id
+    name: 'HeroDetail',
+    component: HeroDetailComponent
+  }
 ])
 @Component({
   selector: 'my-app',

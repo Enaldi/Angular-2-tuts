@@ -1,5 +1,5 @@
 // This is designed to be a shell app that only handles routing => is attached to a router and displays routed views.
-System.register(['angular2/core', './hero.service', './heroes.component', './dashboard.component', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', './hero.service', './heroes.component', './dashboard.component', './hero-detail.component', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,7 +9,7 @@ System.register(['angular2/core', './hero.service', './heroes.component', './das
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, hero_service_1, heroes_component_1, dashboard_component_1, router_1;
+    var core_1, hero_service_1, heroes_component_1, dashboard_component_1, hero_detail_component_1, router_1;
     var AppComponent;
     return {
         setters:[
@@ -24,6 +24,9 @@ System.register(['angular2/core', './hero.service', './heroes.component', './das
             },
             function (dashboard_component_1_1) {
                 dashboard_component_1 = dashboard_component_1_1;
+            },
+            function (hero_detail_component_1_1) {
+                hero_detail_component_1 = hero_detail_component_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -46,6 +49,11 @@ System.register(['angular2/core', './hero.service', './heroes.component', './das
                             name: 'Heroes',
                             component: heroes_component_1.HeroesComponent // Component created when navigating to the route
                         },
+                        {
+                            path: '/detail/:id',
+                            name: 'HeroDetail',
+                            component: hero_detail_component_1.HeroDetailComponent
+                        }
                     ]),
                     core_1.Component({
                         selector: 'my-app',
