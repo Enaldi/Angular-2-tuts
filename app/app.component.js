@@ -1,5 +1,5 @@
 // This is designed to be a shell app that only handles routing => is attached to a router and displays routed views.
-System.register(['angular2/core', './hero.service', './heroes.component', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', './hero.service', './heroes.component', './dashboard.component', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,7 +9,7 @@ System.register(['angular2/core', './hero.service', './heroes.component', 'angul
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, hero_service_1, heroes_component_1, router_1;
+    var core_1, hero_service_1, heroes_component_1, dashboard_component_1, router_1;
     var AppComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', './hero.service', './heroes.component', 'angul
             function (heroes_component_1_1) {
                 heroes_component_1 = heroes_component_1_1;
             },
+            function (dashboard_component_1_1) {
+                dashboard_component_1 = dashboard_component_1_1;
+            },
             function (router_1_1) {
                 router_1 = router_1_1;
             }],
@@ -33,14 +36,20 @@ System.register(['angular2/core', './hero.service', './heroes.component', 'angul
                 AppComponent = __decorate([
                     router_1.RouteConfig([
                         {
+                            path: '/dashboard',
+                            name: 'Dashboard',
+                            component: dashboard_component_1.DashboardComponent,
+                            useAsDefault: true // Works with <base href="/"> in index.html
+                        },
+                        {
                             path: '/heroes',
                             name: 'Heroes',
                             component: heroes_component_1.HeroesComponent // Component created when navigating to the route
-                        }
+                        },
                     ]),
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n      <h1>{{title}}</h1>\n      <a [routerLink]=\"['Heroes']\">Heroes</a>\n      <router-outlet></router-outlet>\n  ",
+                        template: "\n      <nav>\n        <h1>{{title}}</h1>\n        <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n        <a [routerLink]=\"['Heroes']\">Heroes</a>\n        <router-outlet></router-outlet>\n      </nav>\n  ",
                         directives: [
                             router_1.ROUTER_DIRECTIVES
                         ],

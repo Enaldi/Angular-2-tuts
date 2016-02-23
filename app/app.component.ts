@@ -3,21 +3,31 @@
 import { Component } from 'angular2/core';
 import { HeroService } from './hero.service';
 import { HeroesComponent } from './heroes.component';
+import { DashboardComponent } from './dashboard.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
 @RouteConfig([
+    {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: DashboardComponent,
+    useAsDefault: true // Works with <base href="/"> in index.html
+  },
   {
     path: '/heroes',
     name: 'Heroes', // Name of the route. MUST begin with capital letter.
     component: HeroesComponent // Component created when navigating to the route
-  }
+  },
 ])
 @Component({
   selector: 'my-app',
   template: `
-      <h1>{{title}}</h1>
-      <a [routerLink]="['Heroes']">Heroes</a>
-      <router-outlet></router-outlet>
+      <nav>
+        <h1>{{title}}</h1>
+        <a [routerLink]="['Dashboard']">Dashboard</a>
+        <a [routerLink]="['Heroes']">Heroes</a>
+        <router-outlet></router-outlet>
+      </nav>
   `,
   directives: [
       ROUTER_DIRECTIVES
