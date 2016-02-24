@@ -35,6 +35,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
         <router-outlet></router-outlet>
       </nav>
   `,
+  styleUrls: ['app/styles/app.component.css'],
   directives: [
       ROUTER_DIRECTIVES
   ], 

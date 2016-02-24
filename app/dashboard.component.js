@@ -40,7 +40,8 @@ System.register(['angular2/core', 'angular2/router', './hero.service'], function
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'my-dashboard',
-                        templateUrl: '/app/templates/dashboard.component.html'
+                        templateUrl: '/app/templates/dashboard.component.html',
+                        styleUrls: ['app/styles/dashboard.component.css']
                     }), 
                     __metadata('design:paramtypes', [(typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object, hero_service_1.HeroService])
                 ], DashboardComponent);
