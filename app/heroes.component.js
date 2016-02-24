@@ -52,7 +52,7 @@ System.register(['angular2/core', 'angular2/router', './hero-detail.component', 
                     core_1.Component({
                         selector: 'my-heroes',
                         templateUrl: '/app/templates/heroes.component.html',
-                        styleUrls: ['/app/styles/heroes.component.css'],
+                        styleUrls: ['app/styles/heroes.component.css'],
                         directives: [hero_detail_component_1.HeroDetailComponent]
                     }), 
                     __metadata('design:paramtypes', [(typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object, hero_service_1.HeroService])
