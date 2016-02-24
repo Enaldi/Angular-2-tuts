@@ -19,8 +19,8 @@ export class DashboardComponent implements OnInit {
 			.then(heroes => this.heroes = heroes.slice(1, 5));
 	}
 
-	gotoDetail(hero: Hero) { 
-		let link = ['HeroDetail', { id: hero.id }]; // Link parameters => as if this link were clicked -- Note it passes in the id.
-		this._router.navigate(link); // Pass array to router's navigate method
+	gotoDetail(hero: Hero) { // Called on click of hero on dashboard
+		let link = ['HeroDetail', { id: hero.id }]; // Link parameters => Called on click of Hero on dashboard -- Note it passes in the id.
+		this._router.navigate(link); // Pass array to router's navigate method ==> Triggers the route (in app.components) for this hero.
 	}
 }

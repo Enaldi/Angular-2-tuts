@@ -1,4 +1,4 @@
-import {Component. OnInit} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {RouteParams} from 'angular2/router';
 import {Hero} from './hero-interface';
 import {HeroService} from './hero.service';
@@ -9,7 +9,7 @@ import {HeroService} from './hero.service';
 	inputs: ['hero'],
 	templateUrl: '/app/templates/hero-detail.component.html'
 })
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit {
 
 	hero: Hero; // This just types the param (hero is really set as an input in this component -- see above)
 

@@ -34,8 +34,8 @@ System.register(['angular2/core', 'angular2/router', './hero.service'], function
                         .then(function (heroes) { return _this.heroes = heroes.slice(1, 5); });
                 };
                 DashboardComponent.prototype.gotoDetail = function (hero) {
-                    var link = ['HeroDetail', { id: hero.id }]; // Link parameters => as if this link were clicked -- Note it passes in the id.
-                    this._router.navigate(link); // Pass array to router's navigate method
+                    var link = ['HeroDetail', { id: hero.id }]; // Link parameters => Called on click of Hero on dashboard -- Note it passes in the id.
+                    this._router.navigate(link); // Pass array to router's navigate method ==> Triggers the route (in app.components) for this hero.
                 };
                 DashboardComponent = __decorate([
                     core_1.Component({
